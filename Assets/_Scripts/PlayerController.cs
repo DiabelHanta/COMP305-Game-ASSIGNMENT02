@@ -146,6 +146,10 @@ public class PlayerController : MonoBehaviour
 		{
 			this._isGrounded = true;
 		}
+		else if(other.gameObject.CompareTag("Enemy"))
+		{
+			this._isGrounded = false;
+		}
 	}
 
 	//PRIVATE METHODS
