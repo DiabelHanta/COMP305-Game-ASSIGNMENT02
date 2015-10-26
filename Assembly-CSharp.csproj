@@ -48,7 +48,13 @@
      <Compile Include="Assets\_Scripts\DeathTrigger.cs" />
      <Compile Include="Assets\_Scripts\EnemyController.cs" />
      <Compile Include="Assets\_Scripts\ItemController.cs" />
+     <Compile Include="Assets\_Scripts\PlatformFall.cs" />
      <Compile Include="Assets\_Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\ScoreManager.cs" />
+     <Compile Include="Assets\_Scripts\SpawnCoins.cs" />
+     <Compile Include="Assets\_Scripts\SpawnManager.cs" />
+     <None Include="Assets\Audio\Sound FX\Blade Sounds\Blade Sounds Readme.txt" />
+     <None Include="Assets\Sprites\Environment Images\Background Images\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

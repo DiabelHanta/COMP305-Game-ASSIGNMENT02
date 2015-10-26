@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
 	//PRIVATE INSTANCE VARIABLES
 	private AudioSource[] _audioSources; //array of audio sources
-	private AudioSource _elfSound; //pickup item sound
+	private AudioSource _CoinSound; //pickup coin sound
 	private AudioSource _jumpSound; 
 	private Rigidbody2D _rb2d;
 	private Transform _transform;
@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
 		this._transform = gameObject.GetComponent<Transform> ();
 		this._anim = gameObject.GetComponent<Animator> ();
 
-//		this._audioSources = gameObject.GetComponent<AudioSource>();
+		this._audioSources = gameObject.GetComponents<AudioSource>();
 		//audio references
-//		this._elfSound = this._audioSources [0];
-//		this._elfSound = this._audioSources [1];
+		this._CoinSound = this._audioSources [0];
+//		this._jumpSound = this._audioSources [1];
 	}
 
 	// Physics update
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 		//				jump = true;
 	
 		//checks if player is jumping
-		if((Input.GetKey ("up") || Input.GetKey (KeyCode.W)))
+		if(Input.GetButtonDown ("Jump"))
 		{
 			//checks if player is grounded
 			if(this._isGrounded)
@@ -129,14 +129,14 @@ public class PlayerController : MonoBehaviour
 
 	//INSERT AUDIO FILE!
 	//COLLISION METHODS
-//	void OnCollisionEnter2D(Collider2D other)
-//	{
-//		//player hits coin then play "_elfSound"
-//		if(other.gameObject.CompareTag("Coin"))
-//		{
-//			this._elfSound.Play ();
-//		}
-//	}
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		//player hits coin then play "_elfSound"
+		if(other.gameObject.CompareTag("Coin"))
+		{
+			this._CoinSound.Play ();
+		}
+	}
 
 	void OnCollisionStay2D(Collision2D other)
 	{
@@ -146,10 +146,10 @@ public class PlayerController : MonoBehaviour
 		{
 			this._isGrounded = true;
 		}
-		else if(other.gameObject.CompareTag("Enemy"))
-		{
-			this._isGrounded = false;
-		}
+//		else if(other.gameObject.CompareTag("Enemy"))
+//		{
+//			this._isGrounded = false;
+//		}
 	}
 
 	//PRIVATE METHODS
@@ -166,5 +166,4 @@ public class PlayerController : MonoBehaviour
 			this._transform.localScale = new Vector3(-1f, 1f, 1f); //changes the scale to opposite
 		}
 	}
-
 }
