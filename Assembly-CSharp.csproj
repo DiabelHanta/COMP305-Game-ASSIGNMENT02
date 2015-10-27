@@ -6,7 +6,7 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{985C12E4-A7E8-1765-4BF8-8A05619CFABD}</ProjectGuid>
+	<ProjectGuid>{5CD7E36B-ACEB-BE55-F8D2-2EE52FE89AC9}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,20 +46,28 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\DeathTrigger.cs" />
-     <Compile Include="Assets\_Scripts\EnemyController.cs" />
-     <Compile Include="Assets\_Scripts\ItemController.cs" />
-     <Compile Include="Assets\_Scripts\PlatformFall.cs" />
-     <Compile Include="Assets\_Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Enemy\DamageByContact.cs" />
+     <Compile Include="Assets\_Scripts\Enemy\EnemyController.cs" />
+     <Compile Include="Assets\_Scripts\Item (Coin)\ItemController.cs" />
+     <Compile Include="Assets\_Scripts\Item (Coin)\SpawnCoins.cs" />
+     <Compile Include="Assets\_Scripts\Platforms\PlatformFall.cs" />
+     <Compile Include="Assets\_Scripts\Platforms\SpawnManager.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\_Scripts\ScoreManager.cs" />
-     <Compile Include="Assets\_Scripts\SpawnCoins.cs" />
-     <Compile Include="Assets\_Scripts\SpawnManager.cs" />
      <None Include="Assets\Audio\Sound FX\Blade Sounds\Blade Sounds Readme.txt" />
      <None Include="Assets\Sprites\Environment Images\Background Images\Readme.txt" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
