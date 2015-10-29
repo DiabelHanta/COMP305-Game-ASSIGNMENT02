@@ -38,7 +38,7 @@ public class DamageByContact : MonoBehaviour
 		
 		if (_scoreManager == null) 
 		{
-			Debug.Log("Cannot find 'GameController' script"); //insurance policy. hope this never gets called
+			Debug.Log("Cannot find 'ScoreManager' script"); //insurance policy. hope this never gets called
 		}
 	}
 

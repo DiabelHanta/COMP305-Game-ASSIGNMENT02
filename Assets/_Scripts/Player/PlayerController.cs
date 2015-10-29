@@ -20,12 +20,12 @@ public class PlayerController : MonoBehaviour
 	//PUBLIC INSTANCE VARIABLES
 	public float speed = 50f;
 	public float jump = 500f;
-	public VelocityRange velocityRange = new VelocityRange(300f, 1000f); //restricting min and max for velocity range
+	public VelocityRange velocityRange = new VelocityRange (300f, 1000f); //restricting min and max for velocity range
 
 	//PRIVATE INSTANCE VARIABLES
-	private AudioSource[] _audioSources; //array of audio sources
+	private AudioSource[] _auadddioSources; //array of audio sources
 	private AudioSource _coinSound; //pickup coin sound
-	private AudioSource _hitSound;
+//	private AudioSource _playerDmgSound;
 	private Rigidbody2D _rb2d;
 	private Transform _transform;
 	private Animator _anim;
@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
 		this._transform = gameObject.GetComponent<Transform> ();
 		this._anim = gameObject.GetComponent<Animator> ();
 
-		this._audioSources = gameObject.GetComponents<AudioSource>();
+//		this._audioSources = gameObject.GetComponents<AudioSource>();
 		//audio references
-		this._coinSound = this._audioSources [0];
-		this._hitSound = this._audioSources [1];
+//		this._coinSound = this._audioSources [0];
+//		this._playerDmgSound = this._audioSources [1];
 	}
 
 	// Physics update
@@ -57,8 +57,8 @@ public class PlayerController : MonoBehaviour
 		float forceY = 0f;
 
 		//Absolute values of rigidbody's velocity
-		float absVelocityX = Mathf.Abs (this._rb2d.velocity.x);
-		float absVelocityY = Mathf.Abs (this._rb2d.velocity.y);
+		float absVelX = Mathf.Abs (this._rb2d.velocity.x);
+		float absVelY = Mathf.Abs (this._rb2d.velocity.y);
 
 		//Horizontal movement for player
 		this._movingValue = Input.GetAxis ("Horizontal");
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 				if (this._movingValue > 0) 
 				{
 					//moves right
-					if (absVelocityX < this.velocityRange.vMax) 
+					if (absVelX < this.velocityRange.vMax) 
 					{
 						forceX = this.speed;
 						this._isFacingRight = true;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 				else if (this._movingValue < 0) 
 				{
 					//moves left
-					if (absVelocityX < this.velocityRange.vMax) {
+					if (absVelX < this.velocityRange.vMax) {
 						forceX = -this.speed;
 						this._isFacingRight = false;
 						this._flip ();
@@ -103,19 +103,19 @@ public class PlayerController : MonoBehaviour
 	
 		//checks if player is jumping (using ARROW-UP/'W')
 		//			//conditional for input button for "jump" (NOTE: FROM BASIC TUTORIAL)
-		//			if (Input.GetButtonDown ("Jump") && _grounded) 
+		//			if (Input.GetButtonDown ("Jump") && _isGrounded) 
 		//			{
 		//				// boolean used to ensure when player is jumping
 		//				jump = true;
 	
 		//checks if player is jumping
-		if(Input.GetButtonDown ("Jump"))
+		if ((Input.GetKey ("up") || Input.GetKey (KeyCode.W)))  //if(Input.GetButtonDown ("Jump"))
 		{
 			//checks if player is grounded
 			if(this._isGrounded)
 			{
 				this._anim.SetInteger("AnimState", 2);
-				if(absVelocityY < this.velocityRange.vMax)
+				if(absVelY < this.velocityRange.vMax)
 				{
 					forceY = this.jump;
 //					this._jumpSound.Play();
@@ -129,7 +129,6 @@ public class PlayerController : MonoBehaviour
 		//INSERT (DEATH ANIMATION: this._anim.SetInteger("AnimState" 3)
 	}
 
-	//INSERT AUDIO FILE!
 	//COLLISION METHODS
 	void OnCollisionEnter2D(Collision2D other)
 	{
